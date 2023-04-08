@@ -1,12 +1,32 @@
-const container = document.querySelector('.container');
+const container = document.querySelector('.gridContainer');
 
-let amount = 10
+const containerSize = 500;
+const gridSize = 16;
 
-for (let i = 0; i < amount; i++){
+const rows = Math.floor(containerSize / gridSize);
+const columns = Math.floor(containerSize / gridSize);
+
+//Loop through container and create divs
+for (let i = 0; i < rows * columns; i++){
     const divElement = document.createElement('div');
-    divElement.style.width = "16px";
-    divElement.style.height = "16px";
-    divElement.style.border = "2px solid black";
+    divElement.classList.add('gridElement')
     container.appendChild(divElement);
-    console.log(container);
+    divElement.addEventListener('mouseover', changeColor);
+}
+
+//Target gridElement property and set css hover style
+function changeColor(e) {
+    const gridElement = e.target;
+    gridElement.setAttribute("style", "background-color:black;");
+}
+
+const adjustBtn = document.querySelector('#adjustBtn')
+
+adjustBtn.addEventListener('click', () => {
+    let adjustSize = prompt("Type the size of pixels you want each div to be")
+    console.log(adjustSize);
+})
+
+function changeSize() {
+
 }
