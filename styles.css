@@ -16,17 +16,19 @@
 } 
 
 .gridContainer {
-    height: 500px;
-    width: 500px;
+    max-height: 500px;
+    max-width: 500px;
     display: flex;
     flex-wrap: wrap;
-    flex: 1;
     overflow: hidden;
     border: 2px solid red;
 }
 
 .gridElement {
-    width: 16px;
-    height: 16px;
-    border: 1px solid black;
+    flex-basis: calc(100% / columns);
+    /* To remove blank space on the right but the last row always stretches */
+    flex-grow: 1;
+
+    /* To not show the last row which will stretch and fill the row */
+    height: 10%; /* 100% divided by the number of rows */
 }
